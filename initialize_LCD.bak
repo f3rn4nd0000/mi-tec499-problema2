@@ -1,0 +1,87 @@
+#include <stdio.h>
+#include <wiringPi.h>          
+#include <lcd.h>               
+ 
+//USE WIRINGPI PIN NUMBERS
+#define LCD_RS  13               //Register select pin
+#define LCD_E   18               //Enable Pin
+#define LCD_D4  21               //Data pin 4
+#define LCD_D5  24               //Data pin 5
+#define LCD_D6  26               //Data pin 6
+#define LCD_D7  27               //Data pin 7
+
+
+void clearDisplay(){
+	digitalWrite(LCD_E, HIGH);
+
+	digitalWrite(LCD_RS, LOW);
+	digitalWrite(LCD_D4, LOW);
+	digitalWrite(LCD_D5, LOW);
+	digitalWrite(LCD_D6, LOW);
+	digitalWrite(LCD_D7, LOW);
+
+	digitalWrite(LCD_E, LOW);
+	delay(1);
+	digitalWrite(LCD_E, HIGH);
+	delay(1);
+	digitalWrite(LCD_E, LOW);
+	
+
+	digitalWrite(LCD_D4, HIGH);
+	digitalWrite(LCD_E, LOW);
+	delay(1);
+	digitalWrite(LCD_E, HIGH);
+
+	delay(1);
+    digitalWrite(LCD_E, LOW);
+}
+
+
+int main(void)
+{
+//    int lcd = 0;               
+    wiringPiSetup();        
+	clearDisplay();
+//	printf("%d", lcd);
+//	lcd = lcdInit (2, 16, 4, LCD_RS, LCD_E, LCD_D4, LCD_D5, LCD_D6, LCD_D7, 0, 0, 0, 0);
+//	printf("%d", lcd);
+//   lcdPuts(lcd, "Hello, world!");   
+	return 0;
+}
+
+
+/* 
+int main(void)
+{
+    int lcd;               
+    wiringPiSetup();       
+
+    digitalWrite(LCD_RS, LOW);
+    digitalWrite(LCD_E, LOW);
+    digitalWrite(LCD_D4, LOW);
+    digitalWrite(LCD_D5, LOW);
+    digitalWrite(LCD_D6, LOW);
+    digitalWrite(LCD_D7, LOW);
+
+    lcd = lcdInit (2, 16, 4, LCD_RS, LCD_E, LCD_D4, LCD_D5, LCD_D6, LCD_D7, 0, 0, 0, 0);
+	printf("%d", lcd);               
+    lcdPuts(lcd, "DISGRAÇAA!!!!");   
+}
+*/
+
+//		digitalWrite(LCD_RS, HIGH);
+//		delay(1000);
+//		digitalWrite(LCD_E, HIGH);
+//		delay(1000);
+//	digitalWrite(LCD_D4, HIGH);
+//	delay(1000);	
+//	digitalWrite(LCD_D5, HIGH);
+//	delay(1000);	
+//	digitalWrite(LCD_D6, HIGH);
+//	delay(1000);	
+//	digitalWrite(LCD_D7, HIGH);
+
+	
+//    lcd = lcdInit (2, 16, 4, LCD_RS, LCD_E, 0, 0, 0, 0,  LCD_D4, LCD_D5, LCD_D6, LCD_D7);
+//	printf("%d", lcd);               
+//    lcdPuts(lcd, "Hello, world!");   
